@@ -2,20 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Red Hat Text", sans-serif;
+  background-color: hsl(13, 31%, 94%);
+}
+
+.title-text {
+  color: hsl(14, 65%, 9%);
+}
+
+.red-font {
+  color: hsl(14, 86%, 42%);
+}
+
+.red-button {
+  background-color: hsl(14, 86%, 42%);
+  border: 2px solid hsl(14, 86%, 42%);
+  color: #fff;
+  border-radius: 20px; /* Adjust the value for more or less rounding */
+  padding: 0.5rem 0.5rem; /* Optional: adds some spacing inside the element */
+}
+
+.green-font {
+  color: hsl(159, 69%, 38%);
+}
+
+.rose-900 {
+  color: hsl(14, 65%, 9%);
+}
+
+.rose-500 {
+  color: hsl(12, 20%, 44%);
+}
+
+.rose-400 {
+  color: hsl(7, 20%, 60%);
+}
+
+.rose-300 {
+  color: hsl(14, 25%, 72%);
+}
+
+.rose-100 {
+  color: hsl(13, 31%, 94%);
+}
+
+.rose-50 {
+  color: hsl(20, 50%, 98%);
+}
+
+.rounded {
+  border-radius: 8px;
+}
+
+.rounder {
+  border-radius: 8px; /* Adjust the value for more or less rounding */
+  padding: 0.5rem 0.5rem; /* Optional: adds some spacing inside the element */
 }

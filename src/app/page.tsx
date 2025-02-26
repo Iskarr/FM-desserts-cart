@@ -1,101 +1,126 @@
+"use client";
+import React from "react";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import desserts from "@/data/data.json";
+import Cart from "@/components/cart/page";
+import { useCart, Product } from "@/app/context/CartContext";
 
-export default function Home() {
+export default function DessertsPage() {
+  const {
+    handleAddToCart,
+    handleIncrement,
+    handleDecrement,
+    cartItems,
+    totalQuantity,
+    totalAmount,
+  } = useCart();
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="container mx-auto px-4 py-8 flex flex-col items-center sm:block">
+      <div className="flex flex-col gap-8 lg:flex-row">
+        {/* Left Column: Header & Desserts Grid */}
+        <div className="flex-1">
+          <h1 className="text-3xl font-bold mb-8 title-text text-center lg:text-left">
+            Desserts
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {desserts.map((dessert: Product) => {
+              const cartItem = cartItems.find(
+                (item) => item.name === dessert.name
+              );
+              return (
+                <div
+                  key={dessert.name}
+                  className="rounded-lg overflow-hidden bg-transparent"
+                >
+                  <div className="relative aspect-square">
+                    <picture>
+                      <source
+                        media="(min-width: 1024px)"
+                        srcSet={dessert.image.desktop}
+                      />
+                      <source
+                        media="(min-width: 768px)"
+                        srcSet={dessert.image.tablet}
+                      />
+                      <source
+                        media="(max-width: 640px)"
+                        srcSet={dessert.image.mobile}
+                      />
+                      <Image
+                        src={dessert.image.mobile}
+                        alt={dessert.name}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover rounded"
+                      />
+                    </picture>
+                    {cartItem ? (
+                      <div className="absolute left-1/2 transform -translate-y-[15px] -translate-x-1/2 z-0 rounded-full bg-[hsl(14,86%,42%)] border border-[hsl(14,86%,42%)] hover:bg-[hsl(14,86%,42%)] w-[148px] h-[40px] flex justify-between items-center">
+                        <button
+                          className="border border-white rounded-full p-1 py-2 m-2"
+                          onClick={() => handleDecrement(dessert)}
+                        >
+                          <Image
+                            src={"/assets/images/icon-decrement-quantity.svg"}
+                            width={10}
+                            height={10}
+                            alt="decrement quantity"
+                          />
+                        </button>
+                        <span className="text-white">{cartItem.quantity}</span>
+                        <button
+                          className="border border-white rounded-full p-1 m-2"
+                          onClick={() => handleIncrement(dessert)}
+                        >
+                          <Image
+                            src={"/assets/images/icon-increment-quantity.svg"}
+                            width={10}
+                            height={10}
+                            alt="increment quantity"
+                          />
+                        </button>
+                      </div>
+                    ) : (
+                      <Button
+                        className="absolute left-1/2 transform -translate-y-[15px] -translate-x-1/2 z-0 rounded-full bg-white border border-[hsl(12,20%,44%)] hover:bg-white"
+                        size="lg"
+                        onClick={() => handleAddToCart(dessert)}
+                      >
+                        <Image
+                          src="/assets/images/icon-add-to-cart.svg"
+                          width={20}
+                          height={20}
+                          alt="add to cart"
+                          style={{ width: "auto", height: "auto" }}
+                        />
+                        <p className="text-black">Add to Cart</p>
+                      </Button>
+                    )}
+                  </div>
+                  <div className="p-2 text-center">
+                    <p className="text-sm rose-500 mt-12">{dessert.category}</p>
+                    <h2 className="text-md font-bold rose-900">
+                      {dessert.name}
+                    </h2>
+                    <p className="text-primary font-semibold red-font">
+                      ${dessert.price.toFixed(2)}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Right Column: Cart */}
+        <Cart
+          totalQuantity={totalQuantity}
+          cartItems={cartItems}
+          totalAmount={totalAmount}
+        />
+      </div>
     </div>
   );
 }
