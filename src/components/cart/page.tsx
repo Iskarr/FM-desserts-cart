@@ -39,7 +39,7 @@ const Cart: React.FC<CartProps> = ({
     <div className="mx-auto">
       {/* CART SUMMARY */}
       <div className="p-4 w-[350px] bg-white shadow-lg rounded mb-8">
-        <header>
+        <header id="cart-header">
           <h2 className="text-xl font-bold mb-4 red-font">
             Your Cart ({totalQuantity})
           </h2>

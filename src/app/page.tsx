@@ -21,12 +21,12 @@ export default function DessertsPage() {
       <div className="flex flex-col gap-8 lg:flex-row">
         {/* Left Column: Header & Desserts Grid */}
         <div className="flex-1">
-          <header>
+          <header id="desserts-header">
             <h1 className="text-3xl font-bold mb-8 title-text text-center lg:text-left">
               Desserts
             </h1>
           </header>
-          <main>
+          <main id="desserts-grid">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {desserts.map((dessert: Product) => {
                 const cartItem = cartItems.find(
@@ -123,7 +123,7 @@ export default function DessertsPage() {
         </div>
 
         {/* Right Column: Cart */}
-        <footer>
+        <footer id="cart-footer">
           <Cart
             totalQuantity={totalQuantity}
             cartItems={cartItems}
