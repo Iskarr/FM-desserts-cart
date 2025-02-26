@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -50,6 +49,7 @@ const Cart: React.FC<CartProps> = ({
               alt="Shopping Cart"
               width={200}
               height={200}
+              loading="lazy"
               className="object-contain"
             />
             <p className="rose-500 mt-4">Your items will appear here</p>
@@ -85,6 +85,7 @@ const Cart: React.FC<CartProps> = ({
                       width={10}
                       height={10}
                       alt="Remove item"
+                      loading="lazy"
                     />
                   </button>
                 </div>
@@ -106,6 +107,7 @@ const Cart: React.FC<CartProps> = ({
             src="/assets/images/icon-carbon-neutral.svg"
             width={20}
             height={20}
+            loading="lazy"
             alt="Carbon Neutral"
           />
           <p className="rose-500 text-sm ml-2">
@@ -129,6 +131,7 @@ const Cart: React.FC<CartProps> = ({
                 src="/assets/images/icon-order-confirmed.svg"
                 width={50}
                 height={50}
+                loading="lazy"
                 alt="Confirm Order"
               />
               <DialogTitle className="text-3xl font-bold text-rose-900 mt-4">
