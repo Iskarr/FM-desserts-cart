@@ -45,7 +45,7 @@ const Cart: React.FC<CartProps> = ({
         </h2>
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center">
-            <Image
+            <img
               src="/assets/images/illustration-empty-cart.svg"
               alt="Shopping Cart"
               width={200}
@@ -80,7 +80,7 @@ const Cart: React.FC<CartProps> = ({
                     className="border border-[hsl(12,20%,44%)] rounded-full p-1"
                     onClick={() => handleRemoveItem(item)}
                   >
-                    <Image
+                    <img
                       src="/assets/images/icon-remove-item.svg"
                       width={10}
                       height={10}
@@ -102,7 +102,7 @@ const Cart: React.FC<CartProps> = ({
         </div>
         {/* Carbon-Neutral Delivery */}
         <div className="flex items-center justify-start mt-4 mb-4 p-2 bg-[hsl(12,20%,92%)] rounded-md">
-          <Image
+          <img
             src="/assets/images/icon-carbon-neutral.svg"
             width={20}
             height={20}
@@ -125,7 +125,7 @@ const Cart: React.FC<CartProps> = ({
           </DialogTrigger>
           <DialogContent className="p-6 bg-white rounded-lg shadow-lg max-w-lg">
             <div className="flex flex-col">
-              <Image
+              <img
                 src="/assets/images/icon-order-confirmed.svg"
                 width={50}
                 height={50}
@@ -144,7 +144,7 @@ const Cart: React.FC<CartProps> = ({
                 <React.Fragment key={index}>
                   <div className="flex items-center justify-between py-4">
                     <div className="flex items-center">
-                      <Image
+                      <img
                         src={
                           item.image?.thumbnail ||
                           "/assets/images/default-thumbnail.png"
@@ -152,6 +152,7 @@ const Cart: React.FC<CartProps> = ({
                         alt={item.name || "Dessert"}
                         width={40}
                         height={40}
+                        loading="lazy"
                         className="rounded"
                       />
                       <div className="ml-4">

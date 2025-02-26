@@ -48,7 +48,7 @@ export default function DessertsPage() {
                         media="(max-width: 640px)"
                         srcSet={dessert.image.mobile}
                       />
-                      <Image
+                      <img
                         src={dessert.image.mobile}
                         alt={dessert.name}
                         width={300}
@@ -88,7 +88,7 @@ export default function DessertsPage() {
                         size="lg"
                         onClick={() => handleAddToCart(dessert)}
                       >
-                        <Image
+                        <img
                           src="/assets/images/icon-add-to-cart.svg"
                           width={20}
                           height={20}
