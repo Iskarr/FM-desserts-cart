@@ -95,7 +95,7 @@ export default function DessertsPage() {
                           alt="add to cart"
                           style={{ width: "auto", height: "auto" }}
                         />
-                        <span className="text-black">Add to Cart</span>
+                        Add to Cart
                       </Button>
                     )}
                   </div>
