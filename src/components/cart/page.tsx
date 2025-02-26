@@ -47,7 +47,6 @@ const Cart: React.FC<CartProps> = ({
           <div className="flex flex-col items-center">
             <Image
               src="/assets/images/illustration-empty-cart.svg"
-              priority={true}
               alt="Shopping Cart"
               width={200}
               height={200}
@@ -83,7 +82,6 @@ const Cart: React.FC<CartProps> = ({
                   >
                     <Image
                       src="/assets/images/icon-remove-item.svg"
-                      priority={true}
                       width={10}
                       height={10}
                       alt="Remove item"
@@ -106,7 +104,6 @@ const Cart: React.FC<CartProps> = ({
         <div className="flex items-center justify-start mt-4 mb-4 p-2 bg-[hsl(12,20%,92%)] rounded-md">
           <Image
             src="/assets/images/icon-carbon-neutral.svg"
-            priority={true}
             width={20}
             height={20}
             alt="Carbon Neutral"
@@ -130,7 +127,6 @@ const Cart: React.FC<CartProps> = ({
             <div className="flex flex-col">
               <Image
                 src="/assets/images/icon-order-confirmed.svg"
-                priority={true}
                 width={50}
                 height={50}
                 alt="Confirm Order"
@@ -153,7 +149,6 @@ const Cart: React.FC<CartProps> = ({
                           item.image?.thumbnail ||
                           "/assets/images/default-thumbnail.png"
                         }
-                        priority={true}
                         alt={item.name || "Dessert"}
                         width={40}
                         height={40}
