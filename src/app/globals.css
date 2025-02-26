@@ -59,3 +59,18 @@ body {
   border-radius: 8px; /* Adjust the value for more or less rounding */
   padding: 0.5rem 0.5rem; /* Optional: adds some spacing inside the element */
 }
+
+
+
+@layer base {}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

@@ -45,7 +45,6 @@ const Cart: React.FC<CartProps> = ({
         </h2>
         {cartItems.length === 0 ? (
           <div className="flex flex-col items-center">
-            {/* @ts-ignore */}
             <Image
               src="/assets/images/illustration-empty-cart.svg"
               priority={true}
